@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zara Inspired Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> <!-- Import Poppins font -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Modern font for better readability */
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* Light background */
+            line-height: 1.6; /* Improved line height for readability */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            width:97%;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.8); /* Darker header for contrast */
+            height: 50px;
+        }
+
+        .logo {
+            font-size:15px;
+            font-weight: bold;
+            color: #fff; /* White text for logo */
+            text-decoration: underline;
+            font-family: 'POPPINS';
+        }
+
+        .search-bar {
+            display: flex;
+        }
+
+        .search-input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100px;
+        }
+
+        .search-button {
+            padding: 10px;
+            border: none;
+            background-color: #000; /* Black button */
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .about-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff; /* White background for content */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            text-align: center;
+        }
+
+        .about-section img {
+            height: 300px;
+            width: 300px;
+            border-radius: 50%; /* Circular image */
+            margin-bottom: 20px; /* Space below the image */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for image */
+        }
+
+        .about-section h2 {
+            color: #333; /* Darker text for better contrast */
+            margin: 20px 0;
+            font-size: 1.2em; /* Increased font size */
+        }
+
+        .contact-section {
+            border: 2px solid #000; /* Black border */
+            padding: 20px;
+            margin: 40px auto;
+            background-color: #fff; /* White background */
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for contact section */
+        }
+
+        .contact-section h1 {
+            text-align: center;
+            font-size: 1.5em; /* Larger heading */
+            margin-bottom: 20px;
+            color: #000; /* Black heading */
+        }
+
+        .contact-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Space between form elements */
+        }
+
+        .contact-section input,
+        .contact-section textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%; /* Full width */
+        }
+
+        .contact-section button {
+            color: #fff; /* White text */
+            background-color: #000; /* Black background */
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .contact-section button:hover {
+            background-color: #333; /* Darker on hover */
+        }
+
+        .footer {
+            text-align: center;
+            margin: 40px 0;
+            color: #333; /* Dark gray text */
+            font-size: 0.9em; /* Smaller footer text */
+            background-color: #000000;
+        }
+    
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+              }     
+
+        .footer h3 {
+            margin: 10px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .about-section,
+            .contact-section {
+                margin: 20px; /* Adjust margin on smaller screens */
+            }
+        }
+        nav {
+            position: relative;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+              }     
+        .menu-item {
+            cursor: pointer;
+            padding: 10px;
+            color: rgb(250, 246, 246);
+            font-family: 'Poppins';
+            font-size: 20px;
+            font-size: bold;
+            margin-right: 30px;
+            
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            margin-top: 10px;
+            list-style-type: none;
+            padding: 0;
+            text-decoration: none;
+            
+        }
+        .menu-item:hover .dropdown {
+            display: block;
+            
+        }
+        .menu-item:hover{
+            color: #ccc;
+        }
+        .dropdown-item {
+            padding: 3px;
+            cursor: pointer;
+        }
+        .dropdown-item:hover {
+            background-color: rgb(227, 228, 238);
+        }
+        em {
+            font-size: 50px;
+            color: rgb(6, 6, 236);
+            font-family:'poppins';
+              }
+              .social-media {
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            margin-right: 15px;
+            color: #000;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .social-media a:hover {
+            color: #4A90E2;
+        } 
+        .section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        em{
+            font-size: 40PX;
+            font-family: 'POPPINS';
+
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><em>S</em>ANN <em></em><em></em> <em></em></div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search...">
+            <button class="search-button">Search</button>
+        </div>
+        <nav class="menu">
+            <div class="menu-item"><strong>Menu</strong>
+                <ul class="dropdown">
+                    <li class="dropdown-item"><a href="index.html">Home</a></li>
+                    <li class="dropdown-item"><a href="design.html">Designs</a></li>
+                    <li class="dropdown-item"><a href="contact.html">Contact</a></li>
+                    <li class="dropdown-item"><a href="about.html">About</a></li>
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <H1 style="font-family: 'poppins';text-align: center;font-size: 50px;text-decoration: underline;"><em>B</em>y <em>S</em>ylvia <em>A</em>bumbi</H1> 
+
+    <div class="about-section">
+        <img src="image 2/IMG-20240906-WA0072.jpg" alt="Profile Image">
+        <h2>My name is ABUMBI SYLVIA NCHANG. I am 17 years old and I have a talent in fashion designing. I am currently a student at Community Technical and Commercial College (COTECC) Bafut, studying fashion design in Upper 6. This is my last year in secondary school. I will the futher my fashion design studies in the University of Buea, Cameroon.</h2>
+    </div>
+
+    <div class="contact-section" id="contact">
+        <h1>Contact Us</h1>
+        <form action="https://formspree.io/f/xovarbyg" method="POST">
+            <label for="message">Email and Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" name="email" required>
+
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" name="name" required>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div style="align-items: center;align-content: center;position:center;" class="social-media">
+        <h3 style="margin-left: 10px;">Connect with SANN on social media:</h3>
+        <a style="margin-left:100px;" href="https://www.facebook.com/profile.php?id=61565973372247" target="_blank">
+            <img src="images 100/imagesssss/facebook_5968764.png" alt="Facebook" style="height: 20px; width: 20px; border-radius: 5px;">
+        </a>
+        <a style="margin-left: ;"  href="https://www.instagram.com/access5447?igsh=dml2eG44YTBhbXgw" target="_blank">
+            <img src="images 100/imagesssss/instagram_2111463.png" alt="Instagram" style="height: 20px; width: 20px; border-radius: 5px;">
+        </a>
+        </a>
+        <a style="margin-left: "  href="https://wa.me/+237681059392" target="_blank">
+            <img src="images 100/imagesssss/whatsapp_733585.png" alt="WhatsApp" style="height: 20px; width: 20px; border-radius: 5px;">
+        </a>
+        <a style="margin-left: ;" href="mailto:alexanderngwa@gmail.com" target="_blank">
+            <img src="images 100/imagesssss/icons8-gmail-50.png" alt="Gmail" style="height: 20px; width: 20px; border-radius: 5px;">
+        </a>
+    </div>
+</div>
+   
+    <footer style="background-color: #000000e7;">
+        <p style="color: white;text-align: center;">© 2024 SANN DESIGNS. All rights reserved.</p>
+        <div class="social-linksim">
+            <h3 style="text-align: center;color: #fff;">You can contact the website creator for the creation of your website from anywhere in the world, by simply clicking on the WhatsApp icon below:</h3>
+            <a style="color: #f4f4f4;" href="https://wa.me/237651418871">
+                <img  src="images 100/imagesssss/whatsapp_733585.png" alt="WhatsApp" style="width: 24px; height: 24px;margin-left: 45%;">
+            </a>
+            <a style="color: #f4f4f4;" href="mailto:alexanderngwa@gmail.com"></a>
+                <img src="images 100/imagesssss/icons8-gmail-50.png" alt="Gmail" style="width: 24px; height: 24px;">
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

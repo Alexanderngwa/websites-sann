@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Design Gallery</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet"
+    />
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            width: 97%;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.356);
+            border-radius: 3px;
+        }
+        .logo {
+            font-size: 35px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            font-family: "Poppins";
+            text-decoration: underline;
+        }
+        nav {
+            position: relative;
+            border-radius: 5px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-right: 20px;
+            position: relative; /* For dropdown */
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #000000;
+        }
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            min-width: 160px;
+            z-index: 1;
+        }
+        .dropdown a {
+            color: #ffffff;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            font-family;
+            font-size:30px ;
+        }
+        .dropdown a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        nav ul li:hover .dropdown {
+            display: block; /* Show dropdown on hover */
+        }
+        .toggle-menu {
+            display: none; /* Hidden by default */
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+        .hero {
+            background: url("your-hero-image.jpg") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 64px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .hero p {
+            font-size: 20px;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .collections {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+        .collection-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .collection-card img,
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .collection-card img:hover,
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+        .testimonials {
+            background: #f9f9f9;
+            padding: 40px;
+            text-align: center;
+        }
+        .testimonial {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .cta {
+            text-align: center;
+            padding: 40px;
+        }
+        .cta button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .cta button:hover {
+            background: #000;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            color: #333;
+            border-top: 1px solid #eaeaea;
+        }
+        .social-links a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            nav ul {
+                display: none; /* Hidden by default on small screens */
+                flex-direction:column; /* Stack links vertically */
+                align-items: center;
+
+            }
+            nav ul li {
+                margin: 10px 0; /* Space vertically */
+            }
+            .toggle-menu {
+                display: block; /* Show toggle button */
+            }
+            .menu.active {
+                display: flex; /* Show menu when active */
+            }
+        }
+        p {
+            text-align: center;
+        }
+        .contact-form {
+            border: 3px solid rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: rgb(2, 1, 1);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #883232;
+        }
+    
+        .search-bar {
+            display: flex;
+        }
+        .search-input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100px;
+        }
+        .search-button {
+            padding: 10px;
+            border: none;
+            background-color:#000;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 50px;
+            font-family: 'poppins';
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff7f7;
+
+              }  
+              em{
+                color: blue;
+                font-size: 60px;
+              }   
+            }
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+              }     
+        nav {
+            position: relative;
+        }
+        .menu-item {
+            cursor: pointer;
+            padding: 10px;
+            color: rgb(255, 255, 255);
+            font-family: 'Poppins', sans-serif;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.76);
+            border: 1px solid #ccc;
+            box-shadow: 0 20px 5px rgb(0, 0, 0);
+            z-index: 1;
+            margin-top: 10px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu-item:hover .dropdown {
+            display: block;
+        }
+        .dropdown-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .dropdown-item:hover {
+            
+        }
+        em {
+            font-size: 70px;
+            color: rgb(6, 6, 236);
+            font-family: 'poppins';
+         }
+              
+    
+          
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><em>S</em>ANN  </div>
+        <div class="search-bar"></div>
+            <input type="text" class="search-input" placeholder="Search...">
+        </div>
+        <div class="toggle-menu" onclick="toggleMenu()">☰</div>
+        <nav>
+            <ul class="menu">
+                <li class="dropdown-item"><a href="index.html">Home</a></li>
+                <li class="dropdown-item"><a href="design.html">Design</a></li>
+                <li class="dropdown-item"><a href="contact.html">Contact</a></li>
+                <li class="dropdown-item"><a href="about.html">About</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+   <H1 style="font-family: 'poppins';text-align: center;font-size: 50px;text-decoration: underline;"><em>B</em>y <em>S</em>ylvia <em>A</em>bumbi</H1> 
+
+    <h2 style="text-align: center;font-size: 25px;font-family: 'poppins';">Ready to Elevate Your Style?</h2>
+
+    <section class="collections">
+        <div class="collection-card">
+            <img src="images 100/imagesssss/WhatsApp Image 2024-09-06 at 14.44.05_463b6788.jpg" alt="Collection 1" />
+            <h2 style="text-align: center">MY First Designs</h2>
+            <p>Explore vibrant styles.</p>
+        </div>
+        <div class="collection-card">
+            <img src="images 100/imagesssss/WhatsApp Image 2024-09-06 at 14.44.09_fd28c353.jpg" alt="Collection 2" />
+            <h2 style="text-align: center">My First Designs</h2>
+            <p>Explore vibrant styles.</p>
+        </div>
+        <div class="collection-card">
+            <img src="images 100/imagesssss/IMG-20240918-WA0013.jpg" alt="Collection 3" />
+            <h2 style="text-align: center">My First Designs</h2>
+            <p>Explore vibrant styles.</p>
+        </div>
+        <div class="collection-card">
+            <img src="images 100/imagesssss/WhatsApp Image 2024-09-06 at 14.44.05_463b6788.jpg" alt="Collection 4" />
+            <h2 style="text-align: center">My First Designs</h2>
+            <p>Stylish layers to keep you warm.</p>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <img src="images 100/imagesssss/WhatsApp Image 2024-09-06 at 14.44.09_fd28c353.jpg" alt="Design 1" />
+        <img src="images 100/imagesssss/IMG-20240906-WA0072.jpg" alt="Design 2" />
+        <img src="images 100/imagesssss/IMG-20240906-WA0075.jpg" alt="Design 3" />
+        <img src="images 100/imagesssss/IMG-20240906-WA0074.jpg" alt="Design 4" />
+    </section>
+
+    <section class="gallery">
+        <img src="images 100/imagesssss/WhatsApp Image 2024-09-24 at 08.49.37_a339ceb4.jpg" alt="Design 4" />
+        <img src="images 100/imagesssss/IMG-20240906-WA0077.jpg" alt="Design 1" />
+        <img src="images 100/imagesssss/IMG-20240918-WA0011.jpg" alt="Design 2" />
+        <img src="images 100/imagesssss/WhatsApp Image 2024-09-24 at 08.49.37_a339ceb4.jpg" alt="Design 4" />
+
+    </section>
+
+    <div style="background-color: #e4e2e2;" class="section" id="contact">
+        <div class="contact-form">
+            <h3 style="color: #000;">What do you think about my first Designs?</h3>
+            <form action="https://formspree.io/f/xovarbyg" method="POST">
+                <label style="color: black;" for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <label style="color: #000;" for="Email">Email:</label>
+                <input type="email" id="Email" name="email" required>
+
+                <label style="color: #000;" for="Name">Name:</label>
+                <input type="text" id="Name" name="name" required>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <section class="cta"></section>
+
+    <footer style="background-color: #000000d5;border-radius: 5px;">
+        <p style="color: white;">© 2024 SANN DESIGNS. All rights reserved.<br>Visit our social media page Below. </p>
+        <div class="social-links">
+            <a style="color: #f4f4f4;" href="https://www.facebook.com/profile.php?id=61565973372247">
+                <img src="images 100/imagesssss/facebook_5968764.png" alt="Facebook" style="width: 24px; height: 24px;">
+            </a>
+            <a style="color: #f4f4f4;" href="https://www.instagram.com/access5447?igsh=dml2eG44YTBhbXgw">
+                <img src="images 100/imagesssss/instagram_2111463.png" alt="Instagram" style="width: 24px; height: 24px;">
+            </a>
+            <a style="color: #f4f4f4;" href="https://wa.me/237651418871">
+                <img src="images 100/imagesssss/whatsapp_733585.png" alt="WhatsApp" style="width: 24px; height: 24px;">
+            </a>
+            <a style="color: #f4f4f4;" href="mailto:alexanderngwa@gmail.com">
+                <img src="images 100/imagesssss/icons8-gmail-50.png" alt="Gmail" style="width: 24px; height: 24px;">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
